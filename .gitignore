@@ -1,0 +1,14 @@
+# Python 缓存
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 运行产物（截图、会话文件、审计日志都在 %TEMP%\screen-agent\，正常不会进仓库）
+_runtime/
+*.log
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
