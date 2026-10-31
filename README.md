@@ -19,7 +19,7 @@
 |---|---|---|
 | **`MOUSEEVENTF_ABSOLUTE` 只认主显示器** | 双屏 2560+2560 下，X 坐标**精确减半**（目标 300 → 实际 150），Y 却完全正常 | 改用 `SetCursorPos` 直接给物理像素，实测跨屏零偏差 |
 | **WinUI/XAML 应用的 UIA 坐标是错的** | Win11 记事本的标签页返回 `(-5616,791)` 这种屏幕外负坐标 | 每个元素过一遍「是否落在桌面内」校验，不可信就拒点 |
-| **Chromium 系的控件树是异步建的** | 首次请求 Electron/Chrome 的 UIA 返回空树 | 内置重试，实测 WorkBuddy（Electron）能拿到 40 个元素 |
+| **Chromium 系的控件树是异步建的** | 首次请求 Electron/Chrome 的 UIA 返回空树 | 内置重试，实测 Harness（Electron）能拿到 40 个元素 |
 | **拖拽起点落在子控件上会失效** | 从按钮上起拖，父窗口收不到 `WM_LBUTTONDOWN` | 起点必须落在空白区；且 `GetWindowRect` 是**外框**，客户区要用 `GetClientRect` 算 |
 | **`SetForegroundWindow` 会被静默拒绝** | 调用成功返回，窗口却不到前台，只闪一下任务栏 | `AttachThreadInput` 抢前台；失败就**拒绝执行**，绝不把 `Ctrl+W` 发到错误窗口 |
 | **浏览器"当前标签"不能靠标题猜** | 多标签时标题会变成「某标题 和另外 N 个页面」，全部匹配失败 | 改用 UIA 的 `SelectionItemPattern.IsSelected` |
@@ -58,10 +58,10 @@ pip install mss uiautomation comtypes pillow
 pip install rapidocr onnxruntime          # 可选：OCR 视觉兜底
 ```
 
-把整个目录放到 WorkBuddy 的技能目录（或任意位置直接调 `scripts/sa.py`）：
+把整个目录放到 Harness 的技能目录（或任意位置直接调 `scripts/sa.py`）：
 
 ```
-~/.workbuddy/skills/screen-agent/
+~/.harness/skills/screen-agent/
 ```
 
 ---
@@ -168,3 +168,10 @@ screen-agent/
 设计上把所有"不可逆"的环节都做成了需要显式确认的闸门——
 不是不信任使用者，而是**自动化最不可靠的一环永远是"模型会不会忽略指示"**。
 把安全寄托在提示词上不如做成机制。
+
+---
+
+## License
+
+[MIT](LICENSE) © 2026 Socrates-xia
+

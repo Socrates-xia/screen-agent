@@ -225,7 +225,7 @@ $SA browser scan                         # 扫描页面内可交互元素
 
 ### 环境依赖
 
-- Python：本机为 `~/.workbuddy/binaries/python/envs/default/Scripts/python.exe`（3.13），
+- Python：本机为 `~/.harness/binaries/python/envs/default/Scripts/python.exe`（3.13），
   请按你的实际路径替换（**整体加引号**，路径可能含中文或空格）
 - 已装：`mss`（截图）、`uiautomation` + `comtypes`（控件树）、`pillow`（标注）、
   `rapidocr` + `onnxruntime` + `opencv-python`（视觉兜底，PP-OCRv6 中文模型已就位）

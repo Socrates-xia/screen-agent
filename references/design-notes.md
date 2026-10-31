@@ -68,7 +68,7 @@ Win32 GetWindowRect = [120, 120, 640, 480]   ← 完全一致
 
 **现象**：首次向 Chrome/Electron 窗口请求 UIA 时返回空树（accessibility 尚未启动）。
 
-**解法**：`scan_window()` 内置重试 —— 扫到空就先等，再扫；实测 WorkBuddy
+**解法**：`scan_window()` 内置重试 —— 扫到空就先等，再扫；实测 Harness
 （Electron）首次扫描即成功拿到 40 个元素（标签页、按钮、菜单项）。
 
 ---
